@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackingapp-frontend
+  labels:
+    app: trackingapp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trackingapp-frontend
+  template:
+    metadata:
+      labels:
+        app: trackingapp-frontend
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - trackingapp-backend
+            topologyKey: topology.kubernetes.io/zone
+      containers:
+      - name: trackingapp-frontend
+        image: DOCKER_IMAGE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: trackingapp-frontend
+#  labels:
+#    app: trackingapp-frontend
+#spec:
+#  selector:
+#    app: trackingapp-frontend
+#  ports:
+#    - name: http
+#      protocol: TCP
+#      port: 80
+#      targetPort: 3000
+#  type: ClusterIP

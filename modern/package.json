@@ -47,6 +47,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "serve -s build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js ."
   },
