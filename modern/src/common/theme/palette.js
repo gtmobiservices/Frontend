@@ -12,6 +12,7 @@ const colors = {
   negative: red[500],
   neutral: grey[500],
   geometry: '#3bb2d0',
+  Tangerine: '#FF8400',
 };
 
 export default {
@@ -24,6 +25,9 @@ export default {
   secondary: {
     main: colors.secondary,
     contrastText: colors.white,
+  },
+  Tangerine: {
+    main: colors.Tangerine,
   },
   colors,
 };

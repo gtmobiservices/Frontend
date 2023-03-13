@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    background: '#FF8400',
     // background: theme.palette.primary.main,
     paddingBottom: theme.spacing(5),
     width: theme.dimensions.sidebarWidth,
@@ -29,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    background: 'rgba(255,165,0)',
-
     boxShadow: '-2px 0px 16px rgba(0, 0, 0, 0.25)',
     [theme.breakpoints.up('lg')]: {
       padding: theme.spacing(0, 25, 0, 0),
